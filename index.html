@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://kit.fontawesome.com/e5ff2f4c45.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Vue ToDo App</title>
+</head>
+<body>
+    <div id="app">
+
+        <h1>{{ showTitle }}</h1>
+
+    <div> <!-- container for the todos -->
+       
+
+        <input type="text" class="todoText" placeholder="Add todo..." v-model="newTodos">
+
+        <button @click="addTodo" class="addTodo"><i class="fa-solid fa-plus"></i></button>
+
+
+        <h2> {{ todoTitle }}</h2>
+        <ul>
+            <li v-for="(todo, index) in todos" :key="todo.id" :class="{ complete: todo.todoCompletion }">
+                <input v-model="todo.todoCompletion" type="checkbox" class="check"> <!--  @click="finishedTodos" -->
+                <input placeholder="Edit todo..." class="todoInput" type="text" v-model="todo.title">
+                <button class="remove" @click="removeTodo(index)">Delete</button>
+            </li>
+        </ul>
+
+        <!-- <ul>
+            <li v-for="(todo, index) in todos" :key="todo.id">
+                <input @click="toggleCompletion" type="checkbox" class="check">
+                <input placeholder="Edit todo..." class="todoInput" type="text" v-model="todo.title">
+                <button class="remove" @click="removeTodo(index)">Delete</button>
+            </li>
+        </ul> -->
+
+        
+    </div> <!-- container for the todos -->
+    
+
+    </div> <!-- End of the app mount -->
+    
+    <script src="app.js">
+    </script>
+</body>
+</html>
